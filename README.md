@@ -1,6 +1,6 @@
 # SimplStream
 
-A modern streaming app for Android TV, built with Kotlin and Jetpack components.
+Your #1 Streaming Service! SimplStream was build by SimplStudios which was created by **Andy "Apple."** Jump into an extremely vast content library of your favorite TV Shows, movies, documentaries, and more. And the best part? **It's completely free!** No subscription, no paywall, no free trial, all completely free. No, it's not an obsolete version of Tubi or Pluto TV that have barely anything on their plate. This streaming service is so vast, it has shows across every popular streaming service! Netflix, Hulu, PrimeTV, Disney Plus, Paramount, HBOMax, Peacock, and so much more. Dive in to your endless entertainment right now! All it takes is one profile.
 
 ![Android](https://img.shields.io/badge/Platform-Android%20TV-green)
 ![Kotlin](https://img.shields.io/badge/Language-Kotlin-purple)
@@ -18,7 +18,7 @@ A modern streaming app for Android TV, built with Kotlin and Jetpack components.
 
 | Search | Home | Profiles | Detail |
 |--------|------|----------|--------|
-| ![Home](screenshots/Screenshot_20260128_140758.png) | ![Search](screenshots/Screenshot_20260128_140831.png) | ![Profiles](screenshots/Screenshot_20260128_141049.png) | ![Detail](screenshots/Screenshot_20260128_141124.png) |
+| ![Search](screenshots/Screenshot_20260128_140758.png) | ![Home](screenshots/Screenshot_20260128_140831.png) | ![Profiles](screenshots/Screenshot_20260128_141049.png) | ![Detail](screenshots/Screenshot_20260128_141124.png) |
 
 ## Tech Stack
 
