@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_primary"
+    android:fillViewport="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Loading View -->
+        <ProgressBar
+            android:id="@+id/loading_view"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/simpl_blue"
+            android:visibility="gone" />
+
+        <!-- Error View -->
+        <LinearLayout
+            android:id="@+id/error_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/error_loading"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <!-- Content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Backdrop with Gradient -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp">
+
+                <ImageView
+                    android:id="@+id/backdrop_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/gradient_hero_bottom" />
+
+            </FrameLayout>
+
+            <!-- Detail Content -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/screen_padding"
+                android:layout_marginTop="-100dp">
+
+                <!-- Poster -->
+                <ImageView
+                    android:id="@+id/poster_image"
+                    android:layout_width="180dp"
+                    android:layout_height="270dp"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/bg_card" />
+
+                <!-- Info Column -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="100dp">
+
+                    <!-- Title -->
+                    <TextView
+                        android:id="@+id/title_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_primary"
+                        android:textSize="32sp"
+                        android:fontFamily="@font/outfit_bold"
+                        tools:text="Movie Title" />
+
+                    <!-- Metadata Row -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/year_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14sp"
+                            tools:text="2024" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" • "
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/rating_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/star_yellow"
+                            android:textSize="14sp"
+                            tools:text="★ 8.5" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" • "
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/runtime_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14sp"
+                            tools:text="2h 15m" />
+
+                    </LinearLayout>
+
+                    <!-- Genres -->
+                    <TextView
+                        android:id="@+id/genres_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        tools:text="Action • Adventure • Sci-Fi" />
+
+                    <!-- Action Buttons -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/play_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="56dp"
+                            android:text="@string/action_play"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/outfit_semibold"
+                            android:background="@drawable/bg_button_primary"
+                            android:paddingHorizontal="32dp"
+                            android:drawableStart="@drawable/ic_play"
+                            android:drawablePadding="8dp"
+                            android:drawableTint="@android:color/white" />
+
+                        <Button
+                            android:id="@+id/watchlist_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="56dp"
+                            android:text="@string/action_add_to_list"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/outfit_medium"
+                            android:background="@drawable/bg_button_secondary"
+                            android:paddingHorizontal="24dp"
+                            android:layout_marginStart="16dp"
+                            android:drawableStart="@drawable/ic_add"
+                            android:drawablePadding="8dp"
+                            android:drawableTint="@color/text_primary" />
+
+                    </LinearLayout>
+
+                    <!-- Resume Progress -->
+                    <ProgressBar
+                        android:id="@+id/resume_progress"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="4dp"
+                        android:layout_marginTop="8dp"
+                        android:max="100"
+                        android:progressDrawable="@drawable/progress_watch"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Overview -->
+            <TextView
+                android:id="@+id/overview_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:paddingHorizontal="@dimen/screen_padding"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"
+                android:lineSpacingMultiplier="1.4"
+                tools:text="Overview text goes here..." />
+
+            <!-- Seasons Container (TV Shows only) -->
+            <LinearLayout
+                android:id="@+id/seasons_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="32dp"
+                android:paddingHorizontal="@dimen/screen_padding"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Episodes"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/outfit_semibold" />
+
+                    <TextView
+                        android:id="@+id/season_spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:padding="12dp"
+                        android:background="@drawable/bg_button_secondary"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp"
+                        android:drawableEnd="@drawable/ic_dropdown"
+                        android:drawablePadding="8dp"
+                        tools:text="Season 1" />
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/episodes_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+            </LinearLayout>
+
+            <!-- Cast -->
+            <TextView
+                android:id="@+id/cast_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:paddingHorizontal="@dimen/screen_padding"
+                android:text="@string/cast_label"
+                android:textColor="@color/text_primary"
+                android:textSize="20sp"
+                android:fontFamily="@font/outfit_semibold"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cast_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:paddingHorizontal="@dimen/screen_padding"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:visibility="gone"
+                xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+            <!-- Recommendations -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:paddingHorizontal="@dimen/screen_padding"
+                android:text="@string/more_like_this"
+                android:textColor="@color/text_primary"
+                android:textSize="20sp"
+                android:fontFamily="@font/outfit_semibold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recommendations_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="48dp"
+                android:paddingHorizontal="@dimen/screen_padding"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:visibility="gone"
+                xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</ScrollView>

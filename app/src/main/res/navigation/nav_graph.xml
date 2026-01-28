@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/profileSelectionFragment">
+
+    <!-- Profile Selection -->
+    <fragment
+        android:id="@+id/profileSelectionFragment"
+        android:name="com.simplstudios.simplstream.presentation.profile.ProfileSelectionFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile_selection">
+
+        <action
+            android:id="@+id/action_profile_to_home"
+            app:destination="@id/browseFragment"
+            app:popUpTo="@id/profileSelectionFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <!-- Browse / Home -->
+    <fragment
+        android:id="@+id/browseFragment"
+        android:name="com.simplstudios.simplstream.presentation.home.BrowseFragment"
+        android:label="Home"
+        tools:layout="@layout/lb_browse_fragment">
+
+        <action
+            android:id="@+id/action_browse_to_detail"
+            app:destination="@id/detailFragment">
+            <argument
+                android:name="contentId"
+                app:argType="integer" />
+            <argument
+                android:name="mediaType"
+                app:argType="string" />
+        </action>
+
+        <action
+            android:id="@+id/action_browse_to_search"
+            app:destination="@id/searchFragment" />
+
+        <action
+            android:id="@+id/action_browse_to_profile"
+            app:destination="@id/profileSelectionFragment"
+            app:popUpTo="@id/browseFragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_browse_to_settings"
+            app:destination="@id/settingsFragment" />
+
+    </fragment>
+
+    <!-- Settings -->
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.simplstudios.simplstream.presentation.settings.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings">
+
+        <action
+            android:id="@+id/action_settings_to_profile"
+            app:destination="@id/profileSelectionFragment"
+            app:popUpTo="@id/browseFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <!-- Detail -->
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.simplstudios.simplstream.presentation.detail.DetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_detail">
+
+        <argument
+            android:name="contentId"
+            app:argType="integer" />
+
+        <argument
+            android:name="mediaType"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_detail_to_player"
+            app:destination="@id/playerFragment">
+            <argument
+                android:name="playbackArgs"
+                app:argType="com.simplstudios.simplstream.presentation.player.PlaybackArgs" />
+        </action>
+
+        <action
+            android:id="@+id/action_detail_to_native_player"
+            app:destination="@id/nativePlayerFragment">
+            <argument
+                android:name="playbackArgs"
+                app:argType="com.simplstudios.simplstream.presentation.player.PlaybackArgs" />
+        </action>
+
+        <action
+            android:id="@+id/action_detail_self"
+            app:destination="@id/detailFragment"
+            app:popUpTo="@id/detailFragment"
+            app:popUpToInclusive="true">
+            <argument
+                android:name="contentId"
+                app:argType="integer" />
+            <argument
+                android:name="mediaType"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+    <!-- Search -->
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.simplstudios.simplstream.presentation.search.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/lb_search_fragment">
+
+        <action
+            android:id="@+id/action_search_to_detail"
+            app:destination="@id/detailFragment">
+            <argument
+                android:name="contentId"
+                app:argType="integer" />
+            <argument
+                android:name="mediaType"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+    <!-- Player (WebView) -->
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="com.simplstudios.simplstream.presentation.player.PlayerFragment"
+        android:label="Player"
+        tools:layout="@layout/fragment_player">
+
+        <argument
+            android:name="playbackArgs"
+            app:argType="com.simplstudios.simplstream.presentation.player.PlaybackArgs" />
+
+    </fragment>
+
+    <!-- Native Player (Media3 ExoPlayer) -->
+    <fragment
+        android:id="@+id/nativePlayerFragment"
+        android:name="com.simplstudios.simplstream.presentation.player.NativePlayerFragment"
+        android:label="Native Player"
+        tools:layout="@layout/fragment_native_player">
+
+        <argument
+            android:name="playbackArgs"
+            app:argType="com.simplstudios.simplstream.presentation.player.PlaybackArgs" />
+
+    </fragment>
+
+</navigation>

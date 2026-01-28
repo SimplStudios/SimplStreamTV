@@ -1,0 +1,1228 @@
+# Video Streaming Embed Services - Technical Reference Guide
+## VidSrc, 111Movies, VidFast, and Vidzee
+
+---
+
+## Table of Contents
+1. [Overview of Services](#overview-of-services)
+2. [Technical Architecture](#technical-architecture)
+3. [VidSrc Documentation](#vidsrc-documentation)
+4. [111Movies Documentation](#111movies-documentation)
+5. [VidFast Documentation](#vidfast-documentation)
+6. [Vidzee Documentation](#vidzee-documentation)
+7. [Common Implementation Patterns](#common-implementation-patterns)
+8. [Building a Legal Streaming Platform](#building-a-legal-streaming-platform)
+9. [API Comparison Table](#api-comparison-table)
+10. [Best Practices](#best-practices)
+
+---
+
+## Overview of Services
+
+### What These Services Do
+
+These are **video embed aggregation services** that:
+- Scrape or aggregate streaming links from various sources
+- Provide iframe embed codes for movies and TV shows
+- Accept IMDB or TMDB IDs as input
+- Return a player with multiple streaming sources
+- Auto-update links when new sources become available
+
+### How They Work (General Architecture)
+
+```
+Your Website
+    ↓
+Request with IMDB/TMDB ID
+    ↓
+Embed Service (VidSrc, 111Movies, etc.)
+    ↓
+Scrape/Query Multiple Video Hosts
+    ↓
+Return Player with Available Sources
+    ↓
+User Watches Content
+```
+
+### Common Features Across All Services
+
+- **Multiple Domains:** Services have multiple domains to evade takedowns
+- **No API Key Required:** Most don't require authentication
+- **IMDB/TMDB ID Support:** Standard identifiers for movies/shows
+- **Multiple Servers:** Provide 5-15+ streaming sources per title
+- **Auto-Quality Selection:** Often include 1080p, 4K options
+- **Subtitle Support:** Many include subtitle tracks
+- **Responsive Players:** Work on desktop, mobile, tablet
+- **Frequent Domain Changes:** Domains change to avoid legal action
+
+---
+
+## VidSrc Documentation
+
+### Official Domains (as of research date)
+
+**Active Domains:**
+- vidsrc.to (primary)
+- vidsrc.me
+- vidsrc.cc
+- vidsrc.icu
+- vidsrc.vip
+- vidsrc.pro
+- vidsrc.net
+- vidsrc.win
+- vidsrc.wtf
+- vidsrc.su
+- vidsrc.rip
+
+**Note:** Domains frequently change. Check vidsrc.domains for current list.
+
+### Embed Structure
+
+#### Movies
+```html
+<!-- Using IMDB ID -->
+<iframe 
+  src="https://vidsrc.to/embed/movie/tt0137523" 
+  frameborder="0" 
+  allowfullscreen
+  width="100%"
+  height="500px">
+</iframe>
+
+<!-- Using TMDB ID -->
+<iframe 
+  src="https://vidsrc.cc/v2/embed/movie/550?tmdb=1" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+```
+
+#### TV Shows / Episodes
+```html
+<!-- Using IMDB ID -->
+<iframe 
+  src="https://vidsrc.to/embed/tv/tt0944947/1/1" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+
+<!-- Format: /tv/{imdb_id}/{season}/{episode} -->
+
+<!-- Using TMDB ID -->
+<iframe 
+  src="https://vidsrc.cc/v2/embed/tv/1399?tmdb=1&season=1&episode=1" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+```
+
+### API Endpoints (Unofficial)
+
+**Note:** VidSrc doesn't provide official API documentation. These are reverse-engineered endpoints:
+
+```javascript
+// Get streaming sources (requires scraping the embed page)
+GET https://vidsrc.to/embed/movie/{imdb_id}
+GET https://vidsrc.to/embed/tv/{imdb_id}/{season}/{episode}
+
+// Response: HTML page with embedded player
+// You must parse the page to extract actual stream URLs
+```
+
+### JavaScript Implementation
+
+```javascript
+class VidSrcEmbed {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+    this.baseUrl = 'https://vidsrc.to/embed';
+  }
+
+  // Embed movie
+  embedMovie(imdbId, options = {}) {
+    const {
+      width = '100%',
+      height = '500px',
+      autoplay = 0,
+      poster = true
+    } = options;
+
+    const params = new URLSearchParams({
+      autoPlay: autoplay,
+      poster: poster ? 1 : 0
+    });
+
+    const iframe = document.createElement('iframe');
+    iframe.src = `${this.baseUrl}/movie/${imdbId}?${params}`;
+    iframe.width = width;
+    iframe.height = height;
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+    iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+
+    this.container.innerHTML = '';
+    this.container.appendChild(iframe);
+  }
+
+  // Embed TV episode
+  embedEpisode(imdbId, season, episode, options = {}) {
+    const {
+      width = '100%',
+      height = '500px',
+      autoplay = 0
+    } = options;
+
+    const iframe = document.createElement('iframe');
+    iframe.src = `${this.baseUrl}/tv/${imdbId}/${season}/${episode}`;
+    iframe.width = width;
+    iframe.height = height;
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+    iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+
+    this.container.innerHTML = '';
+    this.container.appendChild(iframe);
+  }
+
+  // Using TMDB ID
+  embedMovieTMDB(tmdbId, options = {}) {
+    const params = new URLSearchParams({
+      tmdb: 1,
+      autoPlay: options.autoplay || 0
+    });
+
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://vidsrc.cc/v2/embed/movie/${tmdbId}?${params}`;
+    iframe.width = options.width || '100%';
+    iframe.height = options.height || '500px';
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+
+    this.container.innerHTML = '';
+    this.container.appendChild(iframe);
+  }
+}
+
+// Usage
+const player = new VidSrcEmbed('player-container');
+
+// Embed Fight Club
+player.embedMovie('tt0137523', {
+  width: '800px',
+  height: '450px',
+  autoplay: 1
+});
+
+// Embed Game of Thrones S01E01
+player.embedEpisode('tt0944947', 1, 1);
+
+// Using TMDB ID
+player.embedMovieTMDB('550');
+```
+
+### React Component
+
+```jsx
+import React from 'react';
+
+const VidSrcPlayer = ({ 
+  type = 'movie', 
+  imdbId, 
+  tmdbId,
+  season, 
+  episode,
+  width = '100%',
+  height = '500px',
+  autoplay = false
+}) => {
+  const baseUrl = 'https://vidsrc.to/embed';
+
+  const getEmbedUrl = () => {
+    if (type === 'movie') {
+      if (tmdbId) {
+        return `https://vidsrc.cc/v2/embed/movie/${tmdbId}?tmdb=1&autoPlay=${autoplay ? 1 : 0}`;
+      }
+      return `${baseUrl}/movie/${imdbId}?autoPlay=${autoplay ? 1 : 0}`;
+    } else if (type === 'tv') {
+      if (tmdbId) {
+        return `https://vidsrc.cc/v2/embed/tv/${tmdbId}?tmdb=1&season=${season}&episode=${episode}`;
+      }
+      return `${baseUrl}/tv/${imdbId}/${season}/${episode}`;
+    }
+  };
+
+  return (
+    <div className="vidsrc-player">
+      <iframe
+        src={getEmbedUrl()}
+        width={width}
+        height={height}
+        frameBorder="0"
+        allowFullScreen
+        allow="autoplay; fullscreen; picture-in-picture"
+        title="Video Player"
+      />
+    </div>
+  );
+};
+
+export default VidSrcPlayer;
+
+// Usage
+<VidSrcPlayer 
+  type="movie"
+  imdbId="tt0137523"
+  width="800px"
+  height="450px"
+  autoplay={true}
+/>
+
+<VidSrcPlayer 
+  type="tv"
+  imdbId="tt0944947"
+  season={1}
+  episode={1}
+/>
+```
+
+### Player Events (PostMessage API)
+
+```javascript
+// Listen for player events
+window.addEventListener('message', (event) => {
+  // Verify origin
+  if (event.origin !== 'https://vidsrc.to') return;
+
+  if (event.data && event.data.type === 'PLAYER_EVENT') {
+    const { event: eventType, currentTime, duration } = event.data.data;
+    
+    switch(eventType) {
+      case 'play':
+        console.log('Video started playing');
+        break;
+      case 'pause':
+        console.log('Video paused');
+        break;
+      case 'ended':
+        console.log('Video ended');
+        // Load next episode automatically
+        break;
+      case 'timeupdate':
+        console.log(`Progress: ${currentTime}s / ${duration}s`);
+        // Save watch progress
+        saveProgress(currentTime, duration);
+        break;
+    }
+  }
+});
+
+function saveProgress(currentTime, duration) {
+  localStorage.setItem('watchProgress', JSON.stringify({
+    time: currentTime,
+    duration: duration,
+    percentage: (currentTime / duration) * 100,
+    timestamp: Date.now()
+  }));
+}
+```
+
+### Advanced Features
+
+#### Subtitle Support
+```html
+<!-- Add custom subtitles -->
+<iframe 
+  src="https://vidsrc.to/embed/movie/tt0137523?sub=https://yoursite.com/subtitles.srt" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+```
+
+#### Color Customization
+```html
+<iframe 
+  src="https://vidsrc.cc/v2/embed/movie/550?color=ff0000" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+```
+
+#### Start Time
+```html
+<!-- Start at 120 seconds -->
+<iframe 
+  src="https://vidsrc.cc/v2/embed/movie/550?startAt=120" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+```
+
+---
+
+## 111Movies Documentation
+
+### Official Domain
+- www.111movies.com
+
+### Embed Structure
+
+#### Movies
+```html
+<iframe 
+  src="https://www.111movies.com/embed/movie/{imdb_id}" 
+  frameborder="0" 
+  allowfullscreen
+  width="100%"
+  height="500px">
+</iframe>
+```
+
+#### TV Shows
+```html
+<iframe 
+  src="https://www.111movies.com/embed/tv/{imdb_id}/{season}/{episode}" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+```
+
+### JavaScript Implementation
+
+```javascript
+class Movies111Embed {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+    this.baseUrl = 'https://www.111movies.com/embed';
+  }
+
+  embedMovie(imdbId) {
+    const iframe = document.createElement('iframe');
+    iframe.src = `${this.baseUrl}/movie/${imdbId}`;
+    iframe.width = '100%';
+    iframe.height = '500px';
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+    
+    this.container.innerHTML = '';
+    this.container.appendChild(iframe);
+  }
+
+  embedEpisode(imdbId, season, episode) {
+    const iframe = document.createElement('iframe');
+    iframe.src = `${this.baseUrl}/tv/${imdbId}/${season}/${episode}`;
+    iframe.width = '100%';
+    iframe.height = '500px';
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+    
+    this.container.innerHTML = '';
+    this.container.appendChild(iframe);
+  }
+}
+
+// Usage
+const player = new Movies111Embed('player');
+player.embedMovie('tt0137523');
+```
+
+### Features
+- Minimal ads compared to other services
+- Auto-updating links
+- Multiple server options
+- 1080p quality support
+- Responsive player
+
+---
+
+## VidFast Documentation
+
+### Official Domains
+- vidfast.to
+- vidfast.pro
+- vidfast.net
+
+### Embed Structure
+
+#### Movies
+```html
+<!-- Using IMDB ID -->
+<iframe 
+  src="https://vidfast.to/embed/movie/{imdb_id}" 
+  frameborder="0" 
+  allowfullscreen
+  width="100%"
+  height="500px">
+</iframe>
+
+<!-- Using TMDB ID -->
+<iframe 
+  src="https://vidfast.to/embed/movie/{tmdb_id}?tmdb=1" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+```
+
+#### TV Shows
+```html
+<!-- Using IMDB ID -->
+<iframe 
+  src="https://vidfast.to/embed/tv/{imdb_id}/{season}/{episode}" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+
+<!-- Using TMDB ID -->
+<iframe 
+  src="https://vidfast.to/embed/tv/{tmdb_id}?tmdb=1&s={season}&e={episode}" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+```
+
+### JavaScript Implementation
+
+```javascript
+class VidFastEmbed {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+    this.baseUrl = 'https://vidfast.to/embed';
+  }
+
+  embedMovie(id, useTMDB = false) {
+    const params = useTMDB ? '?tmdb=1' : '';
+    const iframe = document.createElement('iframe');
+    iframe.src = `${this.baseUrl}/movie/${id}${params}`;
+    iframe.width = '100%';
+    iframe.height = '500px';
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+    iframe.allow = 'autoplay; encrypted-media';
+    
+    this.container.innerHTML = '';
+    this.container.appendChild(iframe);
+  }
+
+  embedEpisode(id, season, episode, useTMDB = false) {
+    let url;
+    if (useTMDB) {
+      url = `${this.baseUrl}/tv/${id}?tmdb=1&s=${season}&e=${episode}`;
+    } else {
+      url = `${this.baseUrl}/tv/${id}/${season}/${episode}`;
+    }
+
+    const iframe = document.createElement('iframe');
+    iframe.src = url;
+    iframe.width = '100%';
+    iframe.height = '500px';
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+    
+    this.container.innerHTML = '';
+    this.container.appendChild(iframe);
+  }
+}
+
+// Usage
+const player = new VidFastEmbed('player');
+player.embedMovie('tt0137523'); // IMDB
+player.embedMovie('550', true); // TMDB
+player.embedEpisode('tt0944947', 1, 1); // IMDB
+player.embedEpisode('1399', 1, 1, true); // TMDB
+```
+
+### Features
+- Fast streaming with CDN
+- 1080p and 4K support
+- Anime content support
+- Auto-quality selection
+- Multiple server sources
+- Mobile-optimized player
+
+---
+
+## Vidzee Documentation
+
+### Official Domain
+- vidzee.wtf
+
+### Embed Structure
+
+#### Movies
+```html
+<!-- Using IMDB ID -->
+<iframe 
+  src="https://player.vidzee.wtf/embed/movie/tt0137523" 
+  frameborder="0" 
+  allowfullscreen
+  width="100%"
+  height="500px">
+</iframe>
+
+<!-- Using TMDB ID -->
+<iframe 
+  src="https://player.vidzee.wtf/embed/movie/550?tmdb=1" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+```
+
+#### TV Shows
+```html
+<!-- Using IMDB ID -->
+<iframe 
+  src="https://player.vidzee.wtf/embed/tv/tt0944947?s=1&e=1" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+
+<!-- Using TMDB ID -->
+<iframe 
+  src="https://player.vidzee.wtf/embed/tv/1399?tmdb=1&s=1&e=1" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+```
+
+### JavaScript Implementation
+
+```javascript
+class VidzeeEmbed {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+    this.baseUrl = 'https://player.vidzee.wtf/embed';
+  }
+
+  embedMovie(id, useTMDB = false) {
+    const params = useTMDB ? '?tmdb=1' : '';
+    const iframe = document.createElement('iframe');
+    iframe.src = `${this.baseUrl}/movie/${id}${params}`;
+    iframe.width = '100%';
+    iframe.height = '500px';
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+    iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+    
+    this.container.innerHTML = '';
+    this.container.appendChild(iframe);
+  }
+
+  embedEpisode(id, season, episode, useTMDB = false) {
+    const tmdbParam = useTMDB ? '&tmdb=1' : '';
+    const url = `${this.baseUrl}/tv/${id}?s=${season}&e=${episode}${tmdbParam}`;
+
+    const iframe = document.createElement('iframe');
+    iframe.src = url;
+    iframe.width = '100%';
+    iframe.height = '500px';
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+    
+    this.container.innerHTML = '';
+    this.container.appendChild(iframe);
+  }
+}
+
+// Usage
+const player = new VidzeeEmbed('player');
+player.embedMovie('tt0137523');
+player.embedMovie('550', true);
+player.embedEpisode('tt0944947', 1, 1);
+```
+
+### Watch Progress Tracking
+
+```javascript
+// Track watch progress for "Continue Watching" feature
+window.addEventListener('message', (event) => {
+  // Verify origin
+  if (event.origin !== 'https://vidzee.wtf') return;
+
+  if (event.data?.type === 'MEDIA_DATA') {
+    const mediaData = event.data.data;
+    
+    // Save to localStorage
+    localStorage.setItem('vidZeeProgress', JSON.stringify(mediaData));
+    
+    // Or save to database
+    saveToDatabase({
+      mediaId: mediaData.id,
+      currentTime: mediaData.currentTime,
+      duration: mediaData.duration,
+      percentage: (mediaData.currentTime / mediaData.duration) * 100,
+      lastWatched: new Date().toISOString()
+    });
+  }
+});
+
+function saveToDatabase(progressData) {
+  fetch('/api/watch-progress', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(progressData)
+  });
+}
+```
+
+### Player Events
+
+```javascript
+window.addEventListener('message', (event) => {
+  if (event.origin !== 'https://vidzee.wtf') return;
+
+  if (event.data?.type === 'PLAYER_EVENT') {
+    const { event: eventType, currentTime, duration } = event.data.data;
+    
+    console.log(`Player ${eventType} at ${currentTime}s of ${duration}s`);
+    
+    // Handle events
+    handlePlayerEvent(eventType, currentTime, duration);
+  }
+});
+
+function handlePlayerEvent(event, time, duration) {
+  switch(event) {
+    case 'play':
+      // Analytics: User started watching
+      break;
+    case 'pause':
+      // Save current position
+      break;
+    case 'ended':
+      // Mark as watched, suggest next episode
+      break;
+    case 'timeupdate':
+      // Update progress bar
+      break;
+  }
+}
+```
+
+### Features
+- 4K quality support
+- High-speed streaming
+- Continue watching support
+- Player event tracking
+- Multiple server sources
+- Clean, modern UI
+
+---
+
+## Common Implementation Patterns
+
+### Multi-Provider Fallback System
+
+```javascript
+class MultiProviderPlayer {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+    this.providers = [
+      { name: 'vidsrc', url: 'https://vidsrc.to/embed' },
+      { name: 'vidfast', url: 'https://vidfast.to/embed' },
+      { name: 'vidzee', url: 'https://player.vidzee.wtf/embed' },
+      { name: '111movies', url: 'https://www.111movies.com/embed' }
+    ];
+    this.currentProvider = 0;
+  }
+
+  embedMovie(imdbId) {
+    this.loadProvider('movie', imdbId);
+  }
+
+  embedEpisode(imdbId, season, episode) {
+    this.loadProvider('tv', imdbId, season, episode);
+  }
+
+  loadProvider(type, id, season, episode) {
+    const provider = this.providers[this.currentProvider];
+    let url;
+
+    if (type === 'movie') {
+      url = `${provider.url}/movie/${id}`;
+    } else {
+      url = `${provider.url}/tv/${id}/${season}/${episode}`;
+    }
+
+    const iframe = document.createElement('iframe');
+    iframe.src = url;
+    iframe.width = '100%';
+    iframe.height = '500px';
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+    iframe.id = 'video-player';
+
+    // Handle loading errors
+    iframe.onerror = () => {
+      console.error(`Provider ${provider.name} failed, trying next...`);
+      this.switchProvider(type, id, season, episode);
+    };
+
+    this.container.innerHTML = '';
+    this.container.appendChild(iframe);
+
+    // Add provider selector
+    this.addProviderSelector(type, id, season, episode);
+  }
+
+  switchProvider(type, id, season, episode) {
+    this.currentProvider = (this.currentProvider + 1) % this.providers.length;
+    this.loadProvider(type, id, season, episode);
+  }
+
+  addProviderSelector(type, id, season, episode) {
+    const selector = document.createElement('div');
+    selector.className = 'provider-selector';
+    selector.innerHTML = `
+      <label>Video Source:</label>
+      <select id="provider-select">
+        ${this.providers.map((p, i) => 
+          `<option value="${i}" ${i === this.currentProvider ? 'selected' : ''}>
+            ${p.name}
+          </option>`
+        ).join('')}
+      </select>
+    `;
+
+    selector.querySelector('select').addEventListener('change', (e) => {
+      this.currentProvider = parseInt(e.target.value);
+      this.loadProvider(type, id, season, episode);
+    });
+
+    this.container.insertBefore(selector, this.container.firstChild);
+  }
+}
+
+// Usage
+const player = new MultiProviderPlayer('player-container');
+player.embedMovie('tt0137523');
+```
+
+### Complete Streaming Website Implementation
+
+```javascript
+// Full-featured streaming site with TMDB + Embed Services
+
+class StreamingSite {
+  constructor() {
+    this.tmdbApiKey = 'YOUR_TMDB_API_KEY';
+    this.tmdbBaseUrl = 'https://api.themoviedb.org/3';
+    this.imageBaseUrl = 'https://image.tmdb.org/t/p';
+    this.embedProviders = [
+      'https://vidsrc.to/embed',
+      'https://vidfast.to/embed',
+      'https://player.vidzee.wtf/embed'
+    ];
+    this.currentProvider = 0;
+  }
+
+  // Search for movies
+  async searchMovies(query) {
+    const response = await fetch(
+      `${this.tmdbBaseUrl}/search/movie?api_key=${this.tmdbApiKey}&query=${encodeURIComponent(query)}`
+    );
+    const data = await response.json();
+    return data.results;
+  }
+
+  // Get movie details
+  async getMovieDetails(movieId) {
+    const response = await fetch(
+      `${this.tmdbBaseUrl}/movie/${movieId}?api_key=${this.tmdbApiKey}&append_to_response=videos,credits,external_ids`
+    );
+    return await response.json();
+  }
+
+  // Get TV show details
+  async getTVDetails(tvId, season, episode) {
+    const response = await fetch(
+      `${this.tmdbBaseUrl}/tv/${tvId}?api_key=${this.tmdbApiKey}&append_to_response=external_ids`
+    );
+    return await response.json();
+  }
+
+  // Display movie
+  async displayMovie(tmdbId) {
+    const movie = await this.getMovieDetails(tmdbId);
+    const imdbId = movie.external_ids.imdb_id;
+
+    // Display movie info
+    document.getElementById('movie-title').textContent = movie.title;
+    document.getElementById('movie-overview').textContent = movie.overview;
+    document.getElementById('movie-poster').src = 
+      `${this.imageBaseUrl}/w500${movie.poster_path}`;
+    document.getElementById('movie-rating').textContent = 
+      movie.vote_average.toFixed(1);
+
+    // Embed player
+    this.embedMovie(imdbId);
+  }
+
+  // Embed movie
+  embedMovie(imdbId) {
+    const provider = this.embedProviders[this.currentProvider];
+    const iframe = document.createElement('iframe');
+    iframe.src = `${provider}/movie/${imdbId}`;
+    iframe.width = '100%';
+    iframe.height = '500px';
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+
+    const playerContainer = document.getElementById('player');
+    playerContainer.innerHTML = '';
+    playerContainer.appendChild(iframe);
+  }
+
+  // Embed TV episode
+  embedEpisode(imdbId, season, episode) {
+    const provider = this.embedProviders[this.currentProvider];
+    const iframe = document.createElement('iframe');
+    iframe.src = `${provider}/tv/${imdbId}/${season}/${episode}`;
+    iframe.width = '100%';
+    iframe.height = '500px';
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+
+    const playerContainer = document.getElementById('player');
+    playerContainer.innerHTML = '';
+    playerContainer.appendChild(iframe);
+  }
+
+  // Switch provider
+  switchProvider() {
+    this.currentProvider = (this.currentProvider + 1) % this.embedProviders.length;
+  }
+}
+
+// Initialize
+const site = new StreamingSite();
+
+// Search functionality
+document.getElementById('search-btn').addEventListener('click', async () => {
+  const query = document.getElementById('search-input').value;
+  const results = await site.searchMovies(query);
+  displaySearchResults(results);
+});
+
+function displaySearchResults(results) {
+  const container = document.getElementById('search-results');
+  container.innerHTML = results.map(movie => `
+    <div class="movie-card" onclick="site.displayMovie(${movie.id})">
+      <img src="https://image.tmdb.org/t/p/w185${movie.poster_path}" />
+      <h3>${movie.title}</h3>
+      <p>Rating: ${movie.vote_average.toFixed(1)}</p>
+    </div>
+  `).join('');
+}
+```
+
+### React Full Implementation
+
+```jsx
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const StreamingApp = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [provider, setProvider] = useState('vidsrc');
+
+  const TMDB_API_KEY = 'YOUR_API_KEY';
+  const TMDB_BASE = 'https://api.themoviedb.org/3';
+  const IMAGE_BASE = 'https://image.tmdb.org/t/p';
+
+  const providers = {
+    vidsrc: 'https://vidsrc.to/embed',
+    vidfast: 'https://vidfast.to/embed',
+    vidzee: 'https://player.vidzee.wtf/embed',
+    movies111: 'https://www.111movies.com/embed'
+  };
+
+  // Search movies
+  const searchMovies = async (query) => {
+    try {
+      const response = await axios.get(
+        `${TMDB_BASE}/search/movie?api_key=${TMDB_API_KEY}&query=${query}`
+      );
+      setSearchResults(response.data.results);
+    } catch (error) {
+      console.error('Search failed:', error);
+    }
+  };
+
+  // Get movie details with IMDB ID
+  const getMovieDetails = async (movieId) => {
+    try {
+      const response = await axios.get(
+        `${TMDB_BASE}/movie/${movieId}?api_key=${TMDB_API_KEY}&append_to_response=external_ids,videos,credits`
+      );
+      setSelectedMovie(response.data);
+    } catch (error) {
+      console.error('Failed to fetch movie details:', error);
+    }
+  };
+
+  // Handle search
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      searchMovies(searchQuery);
+    }
+  };
+
+  return (
+    <div className="streaming-app">
+      <header>
+        <h1>Streaming Site</h1>
+        <form onSubmit={handleSearch}>
+          <input
+            type="text"
+            placeholder="Search movies..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button type="submit">Search</button>
+        </form>
+      </header>
+
+      {/* Search Results */}
+      <div className="search-results">
+        {searchResults.map(movie => (
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            onClick={() => getMovieDetails(movie.id)}
+          />
+        ))}
+      </div>
+
+      {/* Movie Player */}
+      {selectedMovie && (
+        <MoviePlayer
+          movie={selectedMovie}
+          provider={provider}
+          providers={providers}
+          setProvider={setProvider}
+        />
+      )}
+    </div>
+  );
+};
+
+const MovieCard = ({ movie, onClick }) => (
+  <div className="movie-card" onClick={onClick}>
+    <img
+      src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+      alt={movie.title}
+    />
+    <h3>{movie.title}</h3>
+    <p>⭐ {movie.vote_average.toFixed(1)}</p>
+  </div>
+);
+
+const MoviePlayer = ({ movie, provider, providers, setProvider }) => {
+  const imdbId = movie.external_ids?.imdb_id;
+  const embedUrl = `${providers[provider]}/movie/${imdbId}`;
+
+  return (
+    <div className="movie-player">
+      <div className="movie-info">
+        <img
+          src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+          alt={movie.title}
+        />
+        <div>
+          <h2>{movie.title}</h2>
+          <p>{movie.overview}</p>
+          <p><strong>Rating:</strong> {movie.vote_average.toFixed(1)}/10</p>
+          <p><strong>Release Date:</strong> {movie.release_date}</p>
+        </div>
+      </div>
+
+      <div className="provider-selector">
+        <label>Video Source: </label>
+        <select value={provider} onChange={(e) => setProvider(e.target.value)}>
+          <option value="vidsrc">VidSrc</option>
+          <option value="vidfast">VidFast</option>
+          <option value="vidzee">Vidzee</option>
+          <option value="movies111">111Movies</option>
+        </select>
+      </div>
+
+      <div className="video-container">
+        <iframe
+          src={embedUrl}
+          width="100%"
+          height="500px"
+          frameBorder="0"
+          allowFullScreen
+          allow="autoplay; encrypted-media; picture-in-picture"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default StreamingApp;
+```
+
+---
+
+## Building a Legal Streaming Platform
+
+### Legal Options
+
+#### Option 1: Streaming Availability Aggregator (Legal)
+
+Instead of embedding pirated content, create a platform that shows WHERE users can legally watch content:
+
+```javascript
+// Use Watchmode API or Streaming Availability API
+const StreamingAvailability = {
+  async getWatchOptions(tmdbId) {
+    // This returns LEGAL streaming options
+    const response = await fetch(
+      `https://api.watchmode.com/v1/title/${tmdbId}/sources/?apiKey=pVqrZMFHE21PIRe2OoADMLOSO2kJ4SMtbB6DPWBI`
+    );
+    const data = await response.json();
+    
+    return data.map(option => ({
+      service: option.name, // Netflix, Disney+, etc.
+      type: option.type, // subscription, rent, buy
+      price: option.price,
+      link: option.web_url
+    }));
+  }
+};
+
+// Display legal options to users
+function displayLegalOptions(options) {
+  return options.map(opt => `
+    <div class="streaming-option">
+      <img src="${opt.serviceLogo}" />
+      <p>${opt.service}</p>
+      <p>${opt.type} - ${opt.price}</p>
+      <a href="${opt.link}" target="_blank">Watch Now</a>
+    </div>
+  `).join('');
+}
+```
+
+#### Option 2: Partner with Licensed Providers
+
+- Contact streaming services for partnership programs
+- Become an affiliate for services like Amazon Prime, Apple TV
+- Earn commissions on sign-ups
+
+#### Option 3: Public Domain Content
+
+```javascript
+// Internet Archive API for public domain content
+async function getPublicDomainMovies() {
+  const response = await fetch(
+    'https://archive.org/advancedsearch.php?q=collection:moviesandfilms&fl[]=identifier,title&output=json'
+  );
+  return await response.json();
+}
+```
+
+#### Option 4: License Content Directly
+
+- Work with film distributors
+- License independent films
+- Partner with content creators
+
+### Legal Streaming Architecture
+
+```
+User Request
+    ↓
+Your Platform (metadata only)
+    ↓
+Legal Streaming Services
+    ├─ Netflix (via affiliate link)
+    ├─ Disney+ (via affiliate link)
+    ├─ Amazon Prime (via affiliate link)
+    └─ Apple TV (via affiliate link)
+    ↓
+User subscribes/rents legally
+    ↓
+You earn affiliate commission
+```
+
+---
+
+## API Comparison Table
+
+| Feature | VidSrc | 111Movies | VidFast | Vidzee |
+|---------|--------|-----------|---------|--------|
+| **Domains** | Multiple (.to, .me, .cc, etc.) | .com | .to, .pro, .net | .wtf |
+| **IMDB Support** | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
+| **TMDB Support** | ✅ Yes | ❌ No | ✅ Yes | ✅ Yes |
+| **Max Quality** | 1080p | 1080p | 4K | 4K |
+| **Subtitle Support** | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
+| **Custom Subtitles** | ✅ Yes | ❌ No | ⚠️ Limited | ❌ No |
+| **Multiple Servers** | 10+ | 8+ | 10+ | 10+ |
+| **Ad Level** | Medium | Low | Medium | Medium |
+| **API Documentation** | Unofficial | None | None | None |
+| **Player Events** | ✅ Yes | ⚠️ Limited | ⚠️ Limited | ✅ Yes |
+| **Continue Watching** | ✅ Yes | ❌ No | ❌ No | ✅ Yes |
+| **Mobile Responsive** | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
+| **Anime Support** | ✅ Yes | ❌ No | ✅ Yes | ❌ No |
+| **Download Option** | ❌ No | ❌ No | ⚠️ Some | ❌ No |
+| **Reliability** | High | Medium | High | High |
+| **Domain Stability** | Low (changes often) | Medium | Low | Medium |
+
+---
+
+## Best Practices
+
+### If Building a Legal Platform
+
+1. **Use Licensed Content Only**
+   - Partner with distributors
+   - License public domain content
+   - Use affiliate links to legal services
+
+2. **Implement Proper Attribution**
+   - Credit TMDB for metadata
+   - Follow streaming service guidelines
+   - Comply with affiliate program rules
+
+3. **User Authentication**
+   - Implement proper user accounts
+   - Verify user subscriptions
+   - Geo-blocking where required
+
+4. **Legal Protections**
+   - Terms of Service
+   - Privacy Policy
+   - DMCA compliance procedures
+   - Age verification
+
+### Technical Best Practices
+
+1. **Performance**
+   - Cache TMDB API responses
+   - Lazy load images
+   - Optimize player loading
+   - Use CDN for static assets
+
+2. **User Experience**
+   - Multiple quality options
+   - Continue watching feature
+   - Watchlist functionality
+   - Search autocomplete
+
+3. **Security**
+   - HTTPS only
+   - Content Security Policy
+   - Input validation
+   - Rate limiting
+
+4. **Analytics**
+   - Track viewing habits
+   - Monitor popular content
+   - A/B test features
+   - Measure engagement
+
+---

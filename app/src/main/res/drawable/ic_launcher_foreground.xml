@@ -1,0 +1,27 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- SimplStream logo - stylized "S" with streaming waves -->
+    <group
+        android:translateX="24"
+        android:translateY="24">
+        
+        <!-- Main "S" shape with gradient-like effect using multiple paths -->
+        <!-- Top curve of S -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M45,12 C45,12 38,12 30,12 C18,12 12,20 12,26 C12,32 16,38 26,40 L38,43 C44,44.5 47,48 47,52 C47,57 43,60 36,60 L15,60"
+            android:strokeWidth="6"
+            android:strokeColor="#FFFFFF"
+            android:strokeLineCap="round"/>
+        
+        <!-- Stylized play button integrated into S -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M30,28 L40,35 L30,42 Z"/>
+            
+    </group>
+</vector>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Deep blue/purple gradient background -->
+    <path
+        android:fillColor="#1E40AF"
+        android:pathData="M0,8 C0,3.58 3.58,0 8,0 L40,0 C44.42,0 48,3.58 48,8 L48,40 C48,44.42 44.42,48 40,48 L8,48 C3.58,48 0,44.42 0,40 Z"/>
+    <!-- SimplStream "S" with play button -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M32,10 L20,10 C14,10 10,14 10,19 C10,24 14,28 20,29 L28,31 C31,31.8 33,34 33,37 C33,40 30,43 26,43 L14,43"
+        android:strokeWidth="3.5"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineCap="round"/>
+    <!-- Small play indicator -->
+    <path
+        android:fillColor="#60A5FA"
+        android:pathData="M20,22 L26,26 L20,30 Z"/>
+</vector>

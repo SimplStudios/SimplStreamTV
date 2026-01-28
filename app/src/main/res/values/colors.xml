@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SimplStudios Brand Colors -->
+    <color name="simpl_blue">#2563EB</color>
+    <color name="simpl_blue_dark">#1D4ED8</color>
+    <color name="simpl_blue_light">#3B82F6</color>
+    <color name="simpl_blue_pale">#DBEAFE</color>
+    
+    <!-- Accent Colors -->
+    <color name="simpl_purple">#7C3AED</color>
+    <color name="simpl_pink">#EC4899</color>
+    
+    <!-- Background Colors (TV Dark Theme) -->
+    <color name="background_primary">#0D0D0D</color>
+    <color name="background_secondary">#1A1A1A</color>
+    <color name="background_card">#1F1F1F</color>
+    <color name="background_elevated">#2A2A2A</color>
+    <color name="background_surface">#141414</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B3B3B3</color>
+    <color name="text_tertiary">#808080</color>
+    <color name="text_muted">#737373</color>
+    <color name="text_disabled">#4D4D4D</color>
+    
+    <!-- Focus States -->
+    <color name="focus_border">#2563EB</color>
+    <color name="focus_glow">#3B82F6</color>
+    
+    <!-- Semantic Colors -->
+    <color name="success">#22C55E</color>
+    <color name="warning">#F59E0B</color>
+    <color name="error">#EF4444</color>
+    
+    <!-- Rating -->
+    <color name="rating_star">#F59E0B</color>
+    <color name="simpl_yellow">#F59E0B</color>
+    
+    <!-- Progress -->
+    <color name="progress_background">#3D3D3D</color>
+    <color name="progress_fill">#2563EB</color>
+    
+    <!-- Overlay/Scrim -->
+    <color name="scrim_dark">#CC000000</color>
+    <color name="scrim_medium">#99000000</color>
+    <color name="scrim_gradient_start">#00000000</color>
+    <color name="scrim_gradient_end">#E6000000</color>
+    
+    <!-- White/Transparent -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    
+    <!-- Missing colors -->
+    <color name="background_tertiary">#262626</color>
+    <color name="star_yellow">#F59E0B</color>
+    <color name="background_overlay">#99000000</color>
+    <color name="primary">#2563EB</color>
+</resources>

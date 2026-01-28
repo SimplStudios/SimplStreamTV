@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Secondary button (outline) -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/background_elevated"/>
+            <stroke android:width="2dp" android:color="@color/simpl_blue"/>
+            <corners android:radius="@dimen/button_corner_radius"/>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/transparent"/>
+            <stroke android:width="2dp" android:color="@color/text_muted"/>
+            <corners android:radius="@dimen/button_corner_radius"/>
+        </shape>
+    </item>
+</selector>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_primary"
+    android:padding="@dimen/screen_padding">
+
+    <!-- Loading View -->
+    <ProgressBar
+        android:id="@+id/loading_view"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/simpl_blue"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <!-- Main Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- App Logo/Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/who_is_watching"
+            android:textColor="@color/text_primary"
+            android:textSize="32sp"
+            android:fontFamily="@font/outfit_semibold"
+            android:layout_marginBottom="48dp" />
+
+        <!-- Profiles Grid -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/profiles_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="120dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_profile"
+            tools:itemCount="3" />
+
+        <!-- Add Profile Button -->
+        <LinearLayout
+            android:id="@+id/add_profile_button"
+            android:layout_width="@dimen/profile_card_size"
+            android:layout_height="@dimen/profile_card_size"
+            android:layout_marginTop="32dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bg_card"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_add"
+                android:tint="@color/text_secondary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_profile"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

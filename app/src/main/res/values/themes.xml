@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Theme for SimplStream TV -->
+    <style name="Theme.SimplStream" parent="Theme.Leanback">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/background_primary</item>
+        <item name="android:colorBackground">@color/background_primary</item>
+        
+        <item name="colorPrimary">@color/simpl_blue</item>
+        <item name="colorPrimaryDark">@color/simpl_blue_dark</item>
+        <item name="colorAccent">@color/simpl_blue_light</item>
+        
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        
+        <item name="defaultBrandColor">@color/simpl_blue</item>
+        <item name="defaultBrandColorDark">@color/simpl_blue_dark</item>
+        
+        <!-- Leanback Browse -->
+        <item name="browseTitleTextStyle">@style/SimplStream.BrowseTitleText</item>
+        <item name="browseRowsMarginTop">48dp</item>
+        <item name="headersVerticalGridStyle">@style/SimplStream.HeadersVerticalGrid</item>
+        <item name="rowHeaderStyle">@style/SimplStream.RowHeader</item>
+    </style>
+    
+    <!-- Player Theme (AppCompat-based for ComponentActivity + ExoPlayer) -->
+    <style name="Theme.SimplStream.Player" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimary">@color/simpl_blue</item>
+        <item name="colorPrimaryDark">@color/simpl_blue_dark</item>
+        <item name="colorAccent">@color/simpl_blue_light</item>
+    </style>
+    
+    <!-- Splash Theme -->
+    <style name="Theme.SimplStream.Splash" parent="Theme.SimplStream">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+    
+    <!-- Dialog Theme -->
+    <style name="SimplStreamDialogTheme" parent="Theme.MaterialComponents.Dialog">
+        <item name="android:windowBackground">@color/background_secondary</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="colorPrimary">@color/simpl_blue</item>
+        <item name="colorAccent">@color/simpl_blue</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+    </style>
+    
+    <!-- Browse Title Style -->
+    <style name="SimplStream.BrowseTitleText" parent="Widget.Leanback.Title.Text">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+    
+    <!-- Headers Grid Style -->
+    <style name="SimplStream.HeadersVerticalGrid" parent="Widget.Leanback.Headers.VerticalGridView">
+        <item name="android:background">@color/background_secondary</item>
+    </style>
+    
+    <!-- Row Header Style -->
+    <style name="SimplStream.RowHeader" parent="Widget.Leanback.Row.Header">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+</resources>

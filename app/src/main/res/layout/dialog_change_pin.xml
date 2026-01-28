@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="400dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog"
+    android:padding="24dp">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change PIN"
+        android:textColor="@color/text_primary"
+        android:textSize="24sp"
+        android:fontFamily="@font/outfit_semibold"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Current PIN (shown if profile has PIN) -->
+    <LinearLayout
+        android:id="@+id/current_pin_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current PIN"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/current_pin_input"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_edit_text"
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_tertiary"
+            android:hint="Enter current PIN"
+            android:inputType="numberPassword"
+            android:maxLength="4"
+            android:gravity="center"
+            android:letterSpacing="0.3" />
+
+    </LinearLayout>
+
+    <!-- New PIN -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New PIN"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/new_pin_input"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_edit_text"
+        android:paddingHorizontal="16dp"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_tertiary"
+        android:hint="Enter 4-digit PIN"
+        android:inputType="numberPassword"
+        android:maxLength="4"
+        android:gravity="center"
+        android:letterSpacing="0.3"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Confirm PIN -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm PIN"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/confirm_pin_input"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_edit_text"
+        android:paddingHorizontal="16dp"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_tertiary"
+        android:hint="Confirm PIN"
+        android:inputType="numberPassword"
+        android:maxLength="4"
+        android:gravity="center"
+        android:letterSpacing="0.3" />
+
+    <!-- Error Text -->
+    <TextView
+        android:id="@+id/error_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/error"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginTop="24dp">
+
+        <Button
+            android:id="@+id/remove_pin_button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:paddingHorizontal="16dp"
+            android:text="Remove PIN"
+            android:textColor="@color/error"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_button_secondary"
+            android:paddingHorizontal="24dp"
+            android:text="Cancel"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/bg_button_primary"
+            android:paddingHorizontal="24dp"
+            android:text="Save"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

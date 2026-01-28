@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="400dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@color/background_secondary">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_profile"
+        android:textColor="@color/text_primary"
+        android:textSize="24sp"
+        android:fontFamily="@font/outfit_semibold"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Avatar Selection -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Avatar"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/avatar_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Name Input - using simple EditText -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_name"
+        android:textColor="@color/text_secondary"
+        android:textSize="12sp"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/profile_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:inputType="textPersonName"
+        android:maxLength="20"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_tertiary"
+        android:background="@drawable/bg_edit_text"
+        android:paddingHorizontal="12dp"
+        android:layout_marginBottom="16dp"
+        android:hint="Enter profile name" />
+
+    <!-- PIN Input -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PIN (optional, 4 digits)"
+        android:textColor="@color/text_secondary"
+        android:textSize="12sp"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/pin_input"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:inputType="numberPassword"
+        android:maxLength="4"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_tertiary"
+        android:background="@drawable/bg_edit_text"
+        android:paddingHorizontal="12dp"
+        android:layout_marginBottom="16dp"
+        android:hint="****" />
+
+    <!-- Kids Profile Checkbox -->
+    <CheckBox
+        android:id="@+id/kids_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kids Profile"
+        android:textColor="@color/text_primary"
+        android:buttonTint="@color/simpl_blue"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Error Text -->
+    <TextView
+        android:id="@+id/error_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/error"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginTop="24dp">
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_cancel"
+            android:background="@drawable/bg_button_secondary"
+            android:textColor="@color/text_primary"
+            android:layout_marginEnd="16dp" />
+
+        <Button
+            android:id="@+id/create_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_create"
+            android:background="@drawable/bg_button_primary"
+            android:textColor="@android:color/white"
+            android:enabled="false" />
+
+    </LinearLayout>
+
+</LinearLayout>
