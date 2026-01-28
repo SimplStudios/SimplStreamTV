@@ -18,7 +18,7 @@ A modern streaming app for Android TV, built with Kotlin and Jetpack components.
 
 | Search | Home | Profiles | Detail |
 |--------|------|----------|--------|
-| ![Search](screenshots/Screenshot_20260128_140758.png) | ![Home](screenshots/Screenshot_20260128_140831.png) | ![Profiles](screenshots/Screenshot_20260128_141049.png) | ![Detail](screenshots/Screenshot_20260128_141124.png) |
+| ![Home](screenshots/Screenshot_20260128_140758.png) | ![Search](screenshots/Screenshot_20260128_140831.png) | ![Profiles](screenshots/Screenshot_20260128_141049.png) | ![Detail](screenshots/Screenshot_20260128_141124.png) |
 
 ## Tech Stack
 
