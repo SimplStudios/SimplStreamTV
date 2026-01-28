@@ -53,6 +53,10 @@
             android:id="@+id/action_browse_to_settings"
             app:destination="@id/settingsFragment" />
 
+        <action
+            android:id="@+id/action_browse_to_mylist"
+            app:destination="@id/myListFragment" />
+
     </fragment>
 
     <!-- Settings -->
@@ -88,14 +92,6 @@
         <action
             android:id="@+id/action_detail_to_player"
             app:destination="@id/playerFragment">
-            <argument
-                android:name="playbackArgs"
-                app:argType="com.simplstudios.simplstream.presentation.player.PlaybackArgs" />
-        </action>
-
-        <action
-            android:id="@+id/action_detail_to_native_player"
-            app:destination="@id/nativePlayerFragment">
             <argument
                 android:name="playbackArgs"
                 app:argType="com.simplstudios.simplstream.presentation.player.PlaybackArgs" />
@@ -149,16 +145,22 @@
 
     </fragment>
 
-    <!-- Native Player (Media3 ExoPlayer) -->
+    <!-- My List -->
     <fragment
-        android:id="@+id/nativePlayerFragment"
-        android:name="com.simplstudios.simplstream.presentation.player.NativePlayerFragment"
-        android:label="Native Player"
-        tools:layout="@layout/fragment_native_player">
+        android:id="@+id/myListFragment"
+        android:name="com.simplstudios.simplstream.presentation.mylist.MyListFragment"
+        android:label="My List">
 
-        <argument
-            android:name="playbackArgs"
-            app:argType="com.simplstudios.simplstream.presentation.player.PlaybackArgs" />
+        <action
+            android:id="@+id/action_mylist_to_detail"
+            app:destination="@id/detailFragment">
+            <argument
+                android:name="contentId"
+                app:argType="integer" />
+            <argument
+                android:name="mediaType"
+                app:argType="string" />
+        </action>
 
     </fragment>
 

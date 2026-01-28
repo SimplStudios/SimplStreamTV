@@ -38,6 +38,7 @@ class BrowseFragment : BrowseSupportFragment() {
     
     // Row IDs for special rows
     companion object {
+        private const val ROW_ID_MY_LIST = 999L
         private const val ROW_ID_SETTINGS = 1000L
     }
     
@@ -90,6 +91,9 @@ class BrowseFragment : BrowseSupportFragment() {
     
     private fun handleSettingsClick(item: SettingsItem) {
         when (item.id) {
+            SettingsItem.ID_MY_LIST -> {
+                findNavController().navigate(R.id.action_browse_to_mylist)
+            }
             SettingsItem.ID_SETTINGS -> {
                 findNavController().navigate(R.id.action_browse_to_settings)
             }
@@ -148,6 +152,19 @@ class BrowseFragment : BrowseSupportFragment() {
     }
     
     private fun addProfileRows(adapter: ArrayObjectAdapter, startIndex: Int) {
+        // My List row - shows in sidebar with bookmark icon
+        val myListIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_bookmark)
+        val myListHeader = IconHeaderItem(ROW_ID_MY_LIST, "My List", myListIcon)
+        val myListAdapter = ArrayObjectAdapter(SettingsItemPresenter()).apply {
+            add(SettingsItem(
+                id = SettingsItem.ID_MY_LIST,
+                title = "View My List",
+                description = "Your saved movies and shows",
+                iconRes = R.drawable.ic_bookmark
+            ))
+        }
+        adapter.add(ListRow(myListHeader, myListAdapter))
+        
         // Settings row - shows in sidebar with icon
         val settingsIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_settings)
         val settingsHeader = IconHeaderItem(ROW_ID_SETTINGS, "Settings", settingsIcon)

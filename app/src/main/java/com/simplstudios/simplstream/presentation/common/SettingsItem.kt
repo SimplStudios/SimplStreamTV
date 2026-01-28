@@ -15,5 +15,6 @@ data class SettingsItem(
         const val ID_SWITCH_PROFILE = 1
         const val ID_SIGN_OUT = 2
         const val ID_SETTINGS = 3
+        const val ID_MY_LIST = 4
     }
 }
