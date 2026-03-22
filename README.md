@@ -99,9 +99,9 @@ We started SimplStreamTV as a basic content browser. Look how far we've come.
 |:---:|:---:|
 | ![v4 Home](screenshots/v4/home.png) | ![v4 Profiles](screenshots/v4/profiles.png) |
 
-| Content Browsing | Movies |
+| Content Browsing | Detail Page |
 |:---:|:---:|
-| ![v4 Browse](screenshots/v4/browse.png) | ![v4 Movies](screenshots/v4/movies.png) |
+| ![v4 Browse](screenshots/v4/browse.png) | ![v4 Detail](screenshots/v4/detail.png) |
 
 </div>
 
