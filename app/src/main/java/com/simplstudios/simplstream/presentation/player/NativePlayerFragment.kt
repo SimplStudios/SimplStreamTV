@@ -147,9 +147,14 @@ class NativePlayerFragment : Fragment(R.layout.fragment_native_player) {
     private val funnyLoadingMessages = listOf(
         "Bribing the streaming gods...",
         "Convincing pixels to appear...",
-        "Negotiating with the internet...",
-        "Warming up the flux capacitor...",
-        "Teaching hamsters to run faster..."
+        "Stealing Wi-Fi from the neighbors...",
+        "Asking the movie nicely to load...",
+        "Poking the server with a stick...",
+        "Blowing on the cartridge...",
+        "Downloading more RAM...",
+        "Sending a search party for your movie...",
+        "Waking up the intern...",
+        "Buffering... just kidding. Maybe."
     )
     
     // Quality selection
