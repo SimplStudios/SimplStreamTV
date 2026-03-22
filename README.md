@@ -1,154 +1,219 @@
 <div align="center">
 
-# SimplStreamTV
+# 🎬 SimplStreamTV
 
-### *The Future of Streaming. No Limits. No Ads. No Competition.*
+### ✨ *It's not just streaming. It's SimplStream.* ✨
 
-## Donate to [CashApp](https://cash.app/$simplstudiosofficial)
+[![Android TV](https://img.shields.io/badge/Android_TV-v4.0-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/SimplStudios/SimplStreamTV/releases)
+[![Fire TV](https://img.shields.io/badge/Amazon_Fire_TV-Ready-FF9900?style=for-the-badge&logo=amazon&logoColor=white)](https://github.com/SimplStudios/SimplStreamTV/releases)
 
 ---
 
-[![Android](https://img.shields.io/badge/Android_TV-4.0-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/SimplStudios/SimplStreamTV/releases)
-[![Fire TV](https://img.shields.io/badge/Fire_TV-Compatible-FF9900?style=for-the-badge&logo=amazon&logoColor=white)](https://github.com/SimplStudios/SimplStreamTV/releases)
-[![Kotlin](https://img.shields.io/badge/Kotlin-2.0-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)](https://kotlinlang.org/)
+💙 **Support us** → [CashApp](https://cash.app/$simplstudiosofficial)
 
-**More content than Netflix, Hulu, Disney+, and Prime Video combined — completely free.**
-
-[Download Now](https://github.com/SimplStudios/SimplStreamTV/releases) · [Report Bug](https://github.com/SimplStudios/SimplStreamTV/issues)
-
-[CashApp](https://cash.app/$simplstudiosofficial)
+📥 **[Download Latest APK](https://github.com/SimplStudios/SimplStreamTV/releases)** · 🐛 **[Report a Bug](https://github.com/SimplStudios/SimplStreamTV/issues)**
 
 </div>
 
 ---
 
-## Why SimplStreamTV?
+## 🤔 What is SimplStreamTV?
 
-Every other streaming service wants your money. They lock content behind paywalls, shove ads in your face, and split their libraries across five different subscriptions. **SimplStreamTV ends that.**
+SimplStreamTV is a **free, ad-free streaming app** built from the ground up for your TV.
 
-We give you **everything** — every movie, every TV show, every genre — in one place. No subscriptions. No ads. No buffering. No compromise.
+Not your browser. Not your phone. **Your TV.**
 
-> **More content than Netflix, Hulu, Disney+, and Prime Video combined.**
-> That's not marketing. That's a fact.
+We're talking every movie, every show, every genre — all in one place. No subscriptions. No ads. No "upgrade to premium." No "watch after this 30-second spot." None of that.
 
----
+> 🎯 **More content than Netflix, Hulu, Disney+, and Prime Video combined.**
+>
+> We're not exaggerating. Go ahead, search for anything. It's there.
 
-## What You Get
-
-| | Feature | What It Means |
-|---|---------|---------------|
-| **Unlimited Library** | Every movie and TV show you can think of | Stop paying for 4 different services |
-| **Zero Ads** | Not a single ad. Ever. | Uninterrupted viewing, always |
-| **Zero Lag** | Adaptive streaming with instant playback | Starts playing before you finish clicking |
-| **24/7 Availability** | Always on, always streaming | No maintenance windows, no downtime |
-| **AI-Powered** | Smart recommendations that actually work | "For You" learns what you love |
-| **Fire TV Ready** | Built for the big screen from day one | Optimized for remote control and living room viewing |
-| **Multiple Profiles** | Up to 5 profiles with custom avatars | Everyone in the house gets their own space |
-| **Kids Mode** | Safe content filtering with PIN protection | Parents can relax |
-| **My List** | Save anything, watch anytime | Your personal watchlist across all profiles |
-| **Continue Watching** | Pick up right where you left off | Never lose your place |
+SimplStreamTV was built because we were tired of paying $60/month across four different apps just to watch one show on each. So we made something better. Something that actually respects your time and your wallet.
 
 ---
 
-## The SimplStream Experience
+## 🔥 Why SimplStreamTV?
+
+### 🚫 No Ads. Period.
+Not "fewer ads." Not "ad-supported tier." **Zero. Ads. Ever.** You press play, it plays. That's it. No interruptions, no banners, no "skip in 5 seconds." We don't do that here.
+
+### ⚡ No Lag, No Buffering
+SimplStreamTV uses adaptive streaming that adjusts quality in real-time based on your connection. It starts playing almost instantly — we're talking faster than most paid services. Smooth, crisp, buffer-free.
+
+### 🕐 24/7, Always On
+SimplStreamTV doesn't sleep. There's no maintenance window, no "service unavailable," no downtime. It's always ready when you are — whether that's 2pm or 2am.
+
+### 🧠 AI-Powered "For You" Page
+This isn't some basic "because you watched X" list. SimplStreamTV's **For You** page actually learns what you like — your genres, your patterns, your taste — and surfaces stuff you'll genuinely enjoy. It gets smarter the more you use it.
+
+### 📺 Built for the Big Screen
+This isn't a phone app stretched to fit your TV. SimplStreamTV was **designed for TV from day one.** D-pad navigation that feels natural, a 10-foot UI that looks gorgeous from across the room, and smooth animations everywhere. It feels premium because it is.
+
+### 🔥 Compatible with Fire TV
+Got an Amazon Fire Stick? Fire TV Cube? Chromecast with Google TV? **SimplStreamTV runs on all of them.** Sideload it and you're streaming in minutes.
+
+---
+
+## 🌟 Features You'll Actually Use
+
+### 👥 Multiple Profiles
+Up to 5 profiles per device — each with their own avatar, color, watchlist, and viewing history. Everyone in your house gets their own space. Just like Netflix, except free.
+
+### 👶 Kids Mode
+Turn on Kids Mode for any profile and SimplStreamTV automatically filters out anything inappropriate — horror, violence, adult content, all gone. Parents can lock profiles with a **PIN** so kids can't sneak into the wrong one. Peace of mind, built in.
+
+### 📋 My List
+See something you want to watch later? Add it to **My List** with one click. It's saved to your profile and ready whenever you are. No more texting yourself movie names.
+
+### ▶️ Continue Watching
+Stopped halfway through a movie? SimplStreamTV remembers exactly where you left off. Come back tomorrow, next week, whenever — it picks up right where you paused.
+
+### 🎬 Cinematic Experience
+From the moment you launch the app, SimplStreamTV feels different. A **cinematic startup animation** introduces you to the app, the Netflix-style hero banners showcase what's trending, and every transition is buttery smooth. This isn't some janky side project — it's a real streaming experience.
+
+### 🔍 Search Everything
+Looking for something specific? Our search finds it instantly. Movies, TV shows, actors — just type and go. Every result is one click away from playing.
+
+---
+
+## 📸 The Glow Up — v1.0 vs v4.0
+
+We started SimplStreamTV as a basic content browser. Look how far we've come.
 
 <div align="center">
 
-### v4.0 — Current
+### 📼 v1.0 — Where It All Started
+*Basic Leanback grid, blue sidebar, default Android TV look. It worked, but it wasn't pretty.*
 
-| Home | Profile Selection |
+| Home Screen | Profile Selection |
 |:---:|:---:|
-| ![Home](screenshot_back_to_home.png) | ![Profiles](ss_profile_new.png) |
-| Cinematic hero banners with instant access | Netflix-style profile switching with avatars |
+| ![v1 Home](screenshots/Screenshot_20260128_140758.png) | ![v1 Profiles](screenshots/Screenshot_20260128_141049.png) |
 
 ---
 
-### v1.0 — Where It Started
+### 🚀 v4.0 — The Complete Transformation
+*Custom Netflix-style UI, cinematic hero banners, smooth card browsing, premium profile system.*
 
-| Browse | Movies |
+| Home Screen | Profile Selection |
 |:---:|:---:|
-| ![Browse](screenshot_btn_focused2.png) | ![Movies](screenshot_back_to_movies.png) |
+| ![v4 Home](screenshots/v4/home.png) | ![v4 Profiles](screenshots/v4/profiles.png) |
 
-*From a basic browser to a premium streaming platform. Same mission, completely rebuilt.*
+| Content Browsing | Movies |
+|:---:|:---:|
+| ![v4 Browse](screenshots/v4/browse.png) | ![v4 Movies](screenshots/v4/movies.png) |
 
 </div>
 
----
-
-## Built for Your Living Room
-
-SimplStreamTV isn't a phone app stretched to fit a TV. It's a **native Android TV application** designed from the ground up for the big screen experience:
-
-- **D-pad navigation** that feels natural and responsive
-- **Fire TV Stick, Fire TV Cube, Chromecast with Google TV** — all supported
-- **10-foot UI** designed to look stunning from across the room
-- **Cinematic startup animation** that sets the tone every time you launch
-- **Hardware-accelerated playback** for smooth, buffer-free streaming
+Same app. Completely reborn. 🔥
 
 ---
 
-## For You — AI That Actually Knows You
+## 📥 How to Install SimplStreamTV on Your TV
 
-Most "recommendation engines" show you the same 20 titles on repeat. SimplStream's **For You** page analyzes your viewing patterns, genre preferences, and watch history to surface content you'll genuinely enjoy — not content that paid for placement.
+SimplStreamTV isn't on the Google Play Store or Amazon App Store (yet), so you'll need to **sideload** it. Don't worry — it's easy, takes about 5 minutes, and you only have to do it once.
 
----
+### 📺 Method 1: Using Downloader App (Recommended for Fire TV)
 
-## Technical Excellence
+This is the easiest way if you have an Amazon Fire Stick, Fire TV Cube, or any Fire TV device.
 
-Under the hood, SimplStreamTV v4.0 is a complete architectural overhaul:
+**Step 1: Enable Unknown Sources**
+1. Go to **Settings** → **My Fire TV** → **Developer Options**
+2. Turn on **Apps from Unknown Sources**
+3. If you don't see Developer Options, go to **Settings** → **My Fire TV** → **About** → click **Build Number** 7 times to unlock it
 
-| Component | Technology |
-|-----------|------------|
-| **Language** | Kotlin 2.0 with Coroutines & Flow |
-| **Architecture** | MVVM + Clean Architecture + Repository Pattern |
-| **UI Framework** | Custom Netflix-style UI built on AndroidX Leanback |
-| **Video Engine** | ExoPlayer (Media3) with adaptive HLS streaming |
-| **Dependency Injection** | Hilt (Dagger) |
-| **Networking** | Retrofit + OkHttp + Moshi |
-| **Image Loading** | Coil with memory & disk caching |
-| **Local Storage** | Room Database + DataStore |
-| **Navigation** | Jetpack Navigation Component |
-| **Fonts** | Custom Outfit & Plus Jakarta Sans typefaces |
+**Step 2: Install the Downloader App**
+1. Open the **Amazon App Store** on your Fire TV
+2. Search for **"Downloader"** (by AFTVnews — it's the orange icon)
+3. Install it — it's free
 
-### Key Engineering Achievements in v4.0
-- **Native video player** replacing WebView — zero ads, full playback control, subtitle support
-- **Smart content extraction** with multi-provider fallback system
-- **Parental controls** with SHA-256 encrypted PIN storage
-- **Profile system** with isolated watchlists, history, and preferences per user
-- **Adaptive streaming** with automatic quality selection based on network conditions
-- **Cinematic splash animation** with choreographed text reveals and ambient lighting effects
-- **Custom card system** with focus-aware glow effects optimized for TV remote navigation
+**Step 3: Download SimplStreamTV**
+1. Open **Downloader**
+2. In the URL field, type the download link from our **[Releases Page](https://github.com/SimplStudios/SimplStreamTV/releases)**
+3. It will download the APK automatically
+4. When it's done, click **Install**
+5. Done! SimplStreamTV will appear in your Apps list 🎉
 
 ---
 
-## Download
+### 📱 Method 2: Using Send Files to TV (Any Android TV)
 
-Head to the [Releases Page](https://github.com/SimplStudios/SimplStreamTV/releases) and grab the latest APK.
+Works on any Android TV, Google TV, Chromecast with Google TV, Nvidia Shield, etc.
 
-> **Note:** Enable "Install from Unknown Sources" in your Android TV settings to install.
+**Step 1: Enable Unknown Sources**
+1. Go to **Settings** → **Apps** → **Security & Restrictions**
+2. Turn on **Unknown Sources** for your file manager
+
+**Step 2: Get the APK**
+1. On your **phone**, download the APK from our **[Releases Page](https://github.com/SimplStudios/SimplStreamTV/releases)**
+2. Install **"Send Files to TV"** on both your **phone** and your **TV** (it's free on the Play Store)
+3. Open the app on both devices — make sure they're on the same WiFi
+4. On your phone, tap **Send** and select the SimplStreamTV APK
+5. On your TV, it'll appear automatically — click to install
 
 ---
 
-## License
+### 💻 Method 3: Using ADB (For the Tech-Savvy)
 
-This project is for educational and personal use only. SimplStreamTV does not host, store, or distribute any copyrighted content. All media metadata is provided by [TMDB](https://www.themoviedb.org/).
+If you're comfortable with a command line:
+
+```bash
+# Connect to your TV (replace with your TV's IP address)
+adb connect 192.168.1.XXX:5555
+
+# Install the APK
+adb install SimplStreamTV_v4.0.apk
+```
+
+Find your TV's IP address in **Settings** → **Network** → **About** or **Status**.
 
 ---
 
-## Contact
+### 🔄 Updating SimplStreamTV
+
+When a new version comes out, just repeat the same process — download the new APK and install it. It'll update in place without losing your profiles or watchlist.
+
+---
+
+## 🛠️ Under the Hood
+
+For the developers and curious minds — here's what powers SimplStreamTV v4.0:
+
+- **Kotlin 2.0** with Coroutines & Flow for fully async, non-blocking everything
+- **MVVM + Clean Architecture** — proper separation of concerns, repository pattern, the works
+- **Custom Netflix-style UI** built on top of AndroidX Leanback, heavily customized
+- **ExoPlayer (Media3)** — native video playback with adaptive HLS streaming, no WebView junk
+- **Hilt** for dependency injection across the entire app
+- **Retrofit + OkHttp + Moshi** for fast, efficient API calls
+- **Coil** for image loading with smart memory & disk caching
+- **Room + DataStore** for local storage — profiles, watchlists, history, preferences all persist locally
+- **Jetpack Navigation** for smooth fragment-based screen transitions
+- **Custom Outfit & Plus Jakarta Sans** typefaces for that premium feel
+- **SHA-256 encrypted PIN system** for parental controls
+- **Multi-provider streaming engine** with automatic fallback
+
+---
+
+## 📄 Legal
+
+SimplStreamTV is for educational and personal use only. We do not host, store, or distribute any copyrighted content. All media metadata is provided by [TMDB](https://www.themoviedb.org/).
+
+---
+
+## 📧 Contact
 
 **SimplStudios** — simplstudios@protonmail.com
 
-Project: [https://github.com/SimplStudios/SimplStreamTV](https://github.com/SimplStudios/SimplStreamTV)
+💙 Donate: [CashApp](https://cash.app/$simplstudiosofficial)
 
-Donate: [https://cash.app/$simplstudiosofficial](https://cash.app/$simplstudiosofficial)
+🔗 Project: [github.com/SimplStudios/SimplStreamTV](https://github.com/SimplStudios/SimplStreamTV)
 
 ---
 
 <div align="center">
 
-**Made with intensity by SimplStudios**
+**Made with 💙 by SimplStudios**
 
-*It's not just streaming. It's SimplStream.*
+*It's not just streaming. It's SimplStream.* ✨
 
 </div>
