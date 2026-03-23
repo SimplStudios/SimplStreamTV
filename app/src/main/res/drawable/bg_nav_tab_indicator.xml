@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Navigation tab active indicator - Netflix Style -->
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-    <solid android:color="@color/simpl_blue"/>
-    <corners android:radius="2dp"/>
-    <size android:height="@dimen/nav_indicator_height"/>
-</shape>
